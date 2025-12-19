@@ -30,7 +30,11 @@ class UserControllers extends Controller
         $user = $this->userService->loginUser($username, $password);
 
         if ($user) {
-            return response()->json(['message' => 'Login successful', 'user' => $user]);
+
+            session(['user' => $user]);
+            // rederecionar para a home.blade.php e enviar mensagem de sucesso
+            return  redirect()->route('home')->with('success', 'Login successful');
+           
         } else {
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
@@ -39,6 +43,7 @@ class UserControllers extends Controller
     public function register(Request $request)
     {
         $data = $request->only(['usuario_nome', 'senha', 'adminxuser']);
+        $data['adminxuser'] = $data['adminxuser'] === 'admin' ? 1 : 0;
         $user = $this->userService->registerUser($data);
 
         return response()->json(['message' => 'User registered successfully', 'user' => $user], 201);
