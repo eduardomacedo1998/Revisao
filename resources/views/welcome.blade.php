@@ -60,6 +60,12 @@
                             <button type="submit" class="btn btn-primary w-100">Entrar</button>
                         </form>
                     </div>
+
+                    @if(session('error'))
+                        <div class="alert alert-danger m-3">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="col-md-5">

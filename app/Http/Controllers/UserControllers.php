@@ -36,7 +36,7 @@ class UserControllers extends Controller
             return  redirect()->route('home')->with('success', 'Login successful');
            
         } else {
-            return response()->json(['message' => 'Invalid credentials'], 401);
+            return redirect()->back()->with('error', 'Invalid credentials');
         }
     }
 
