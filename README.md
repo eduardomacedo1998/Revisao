@@ -1,59 +1,238 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+    <h1>📚 Revisão - Plataforma de Gerenciamento de Disciplinas</h1>
 </p>
 
-## About Laravel
+<p align="center">
+    Uma aplicação web moderna desenvolvida com <strong>Laravel</strong> para gerenciar disciplinas e temas de revisão, permitindo que usuários organizem seus estudos de forma eficiente.
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📋 Sobre o Projeto
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Revisão** é uma plataforma educacional que permite aos usuários:
 
-## Learning Laravel
+- ✅ Criar uma conta e fazer login seguro
+- 📝 Cadastrar e gerenciar disciplinas
+- 🎯 Organizar temas de revisão por disciplina
+- 👤 Perfil de usuário com tipos (Usuário comum e Administrador)
+- 📊 Acompanhar suas atividades de revisão
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+O projeto foi desenvolvido com foco em proporcionar uma experiência intuitiva e moderna para estudantes que desejam organizar suas rotinas de revisão.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## 🛠️ Tecnologias Utilizadas
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- **Framework**: Laravel 11
+- **Linguagem**: PHP 8+
+- **Banco de Dados**: PostgreSQL
+- **Front-end**: Bootstrap 5
+- **Autenticação**: Sistema customizado com sessões
+- **Padrão de Arquitetura**: MVC com Service Layer e Repository Pattern
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 🚀 Funcionalidades Principais
 
-## Contributing
+### Autenticação
+- Registro de novos usuários
+- Login com validação de credenciais
+- Sistema de sessão para manter usuário logado
+- Tipos de usuário (Admin e User)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Gerenciamento de Disciplinas
+- Criar novas disciplinas
+- Adicionar temas de revisão
+- Visualizar disciplinas cadastradas
+- Associar disciplinas a usuários
 
-## Code of Conduct
+### Interface Moderna
+- Design responsivo com Bootstrap 5
+- Navegação intuitiva
+- Alertas de sucesso/erro
+- Painel de usuário personalizado
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## 📁 Estrutura do Projeto
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+Revisao/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   └── UserControllers.php
+│   ├── Models/
+│   │   └── User.php
+│   ├── Repositories/
+│   │   └── UserReposytori.php
+│   └── Services/
+│       └── UserService.php
+├── database/
+│   ├── migrations/
+│   │   ├── 0001_01_01_000000_create_users_table.php
+│   │   └── 2025_12_18_000003_create_disciplinas_table.php
+├── resources/
+│   └── views/
+│       ├── layouts/
+│       │   └── layout.blade.php
+│       ├── welcome.blade.php
+│       └── home.blade.php
+├── routes/
+│   └── web.php
+└── .env
+```
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🔧 Instalação e Configuração
+
+### Pré-requisitos
+- PHP 8.0+
+- Composer
+- PostgreSQL
+- Laravel 11
+
+### Passos de Instalação
+
+1. **Clone o repositório**
+   ```bash
+   git clone https://github.com/eduardomacedo1998/Revisao.git
+   cd Revisao
+   ```
+
+2. **Instale as dependências**
+   ```bash
+   composer install
+   ```
+
+3. **Configure o arquivo .env**
+   ```bash
+   cp .env.example .env
+   ```
+   Atualize as variáveis de banco de dados:
+   ```
+   DB_CONNECTION=pgsql
+   DB_HOST=127.0.0.1
+   DB_PORT=5432
+   DB_DATABASE=revisao
+   DB_USERNAME=postgres
+   DB_PASSWORD=sua_senha
+   ```
+
+4. **Gere a chave da aplicação**
+   ```bash
+   php artisan key:generate
+   ```
+
+5. **Execute as migrações**
+   ```bash
+   php artisan migrate
+   ```
+
+6. **Inicie o servidor**
+   ```bash
+   php artisan serve
+   ```
+
+A aplicação estará disponível em `http://localhost:8000`
+
+---
+
+## 📝 Rotas Principais
+
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| GET | `/` | Página de login e cadastro |
+| POST | `/login` | Autenticar usuário |
+| POST | `/register` | Registrar novo usuário |
+| GET | `/home` | Página inicial do usuário (protegida) |
+| GET | `/users` | Listar todos os usuários (JSON) |
+
+---
+
+## 👥 Tipos de Usuário
+
+### Usuário Comum
+- Acessar apenas suas próprias disciplinas
+- Gerenciar seus temas de revisão
+
+### Administrador
+- Acessar todas as disciplinas
+- Gerenciar usuários (futura implementação)
+- Estatísticas gerais da plataforma (futura implementação)
+
+---
+
+## 🗄️ Schema do Banco de Dados
+
+### Tabela: usuarios
+```sql
+- usuario_id (PK)
+- usuario_nome
+- senha
+- adminxuser (0 = user, 1 = admin)
+- created_at
+- updated_at
+```
+
+### Tabela: disciplinas
+```sql
+- disciplina_id (PK)
+- usuario_id (FK)
+- nome_disciplina
+- tema_revisao
+- data_entrada
+```
+
+---
+
+## 🔐 Segurança
+
+- Validação de entrada em todos os formulários
+- Proteção CSRF com tokens Laravel
+- Sessões seguras
+- Senhas armazenadas (implementar hash com bcrypt em produção)
+
+---
+
+## 🚧 Roadmap Futuro
+
+- [ ] Hash de senha com bcrypt
+- [ ] Redefinição de senha por email
+- [ ] Dashboard com estatísticas
+- [ ] Sistema de notas e comentários
+- [ ] Compartilhamento de disciplinas
+- [ ] API RESTful completa
+- [ ] Testes automatizados
+- [ ] Deploy em produção
+
+---
+
+## 🤝 Contribuindo
+
+Contribuições são bem-vindas! Por favor, faça um fork do projeto e envie um pull request com suas melhorias.
+
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+
+---
+
+## 👨‍💻 Autor
+
+**Eduardo Macedo**
+- GitHub: [@eduardomacedo1998](https://github.com/eduardomacedo1998)
+
+---
+
+## 📞 Suporte
+
+Para dúvidas ou sugestões, abra uma issue no repositório GitHub.
+
+---
+
+**Desenvolvido com ❤️ para estudantes que querem organizar suas revisões**
