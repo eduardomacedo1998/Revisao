@@ -2,16 +2,20 @@
 
 namespace App\Services;
 
+use App\Models\Disciplinas;
 use App\Repositories\RevisaoReposytori;
+
 
 
 class RevisoesService
 {
     private $revisaoRepository;
+    private $disciplinaRepository;
 
-    public function __construct(RevisaoReposytori $revisaoRepository)
+    public function __construct(RevisaoReposytori $revisaoRepository, Disciplinas $disciplinaRepository)
     {
         $this->revisaoRepository = $revisaoRepository;
+        $this->disciplinaRepository = $disciplinaRepository;
     }
 
     public function listAllRevisoes()
@@ -37,5 +41,23 @@ class RevisoesService
     public function deleteRevisao($id)
     {
         return $this->revisaoRepository->deleteRevisao($id);
+    }
+
+
+    // rotas para Disciplinas
+
+    public function createDisciplina($data)
+    {
+        return $this->disciplinaRepository->create($data);
+    }
+
+    public function listAllDisciplinas()
+    {
+        return $this->disciplinaRepository->all();
+    }
+
+    public function getRevisoesByUsuario($usuario_id)
+    {
+        return $this->revisaoRepository->getRevisoesByUsuario($usuario_id);
     }
 }

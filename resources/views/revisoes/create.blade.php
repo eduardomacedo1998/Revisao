@@ -15,7 +15,10 @@
                         @csrf
 
                         <div class="mb-3">
-                            <label for="disciplina_id" class="form-label">Disciplina</label>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <label for="disciplina_id" class="form-label">Disciplina</label>
+                                <a href="{{ route('disciplinas.create') }}" class="btn btn-sm btn-outline-primary">+ Criar Disciplina</a>
+                            </div>
                             <select name="disciplina_id" id="disciplina_id" class="form-select" required>
                                 <option value="">Selecione a Disciplina</option>
                                 {{-- As disciplinas serão carregadas aqui pelo backend --}}
