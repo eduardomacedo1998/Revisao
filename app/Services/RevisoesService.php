@@ -56,8 +56,8 @@ class RevisoesService
         return $this->disciplinaRepository->all();
     }
 
-    public function getRevisoesByUsuario($usuario_id)
+    public function getRevisoesByUsuario($usuario_id, $filtros = [])
     {
-        return $this->revisaoRepository->getRevisoesByUsuario($usuario_id);
+        return $this->revisaoRepository->getRevisoesByUsuario($usuario_id, $filtros);
     }
 }

@@ -63,9 +63,46 @@ class RevisaoReposytori
         return \App\Models\Disciplinas::all();
     }
 
-    public function getRevisoesByUsuario($usuario_id)
+    public function getRevisoesByUsuario($usuario_id, $filtros = [])
     {
-        return $this->RevisaoClass->where('usuario_id', $usuario_id)->get();
+        $query = $this->RevisaoClass->where('usuario_id', $usuario_id);
+
+        if (!empty($filtros['disciplina_id'])) {
+            $query->where('disciplina_id', $filtros['disciplina_id']);
+        }
+
+        if (!empty($filtros['data_inicio'])) {
+            $query->where('data_revisao', '>=', $filtros['data_inicio']);
+        }
+
+        if (!empty($filtros['data_fim'])) {
+            $query->where('data_revisao', '<=', $filtros['data_fim']);
+        }
+
+        if (!empty($filtros['busca'])) {
+            $query->where('conteudo', 'LIKE', '%' . $filtros['busca'] . '%')
+                  ->orWhere('observacao', 'LIKE', '%' . $filtros['busca'] . '%');
+        }
+
+        // Aplicar ordenação
+        if (!empty($filtros['ordenacao'])) {
+            switch ($filtros['ordenacao']) {
+                case 'antigo':
+                    $query->orderBy('data_revisao', 'asc');
+                    break;
+                case 'proxima':
+                    $query->orderBy('dias_proxima_revisao', 'asc');
+                    break;
+                case 'recente':
+                default:
+                    $query->orderBy('data_revisao', 'desc');
+                    break;
+            }
+        } else {
+            $query->orderBy('data_revisao', 'desc');
+        }
+
+        return $query->get();
     }
 
 }

@@ -26,7 +26,10 @@ class RevisaoController extends Controller
     public function show($id)
     {
         $revisao = $this->revisoesService->getRevisao($id);
-        return response()->json($revisao);
+        if (request()->expectsJson()) {
+            return response()->json($revisao);
+        }
+        return view('revisoes.show', compact('revisao'));
     }
 
     public function store(Request $request)
@@ -78,7 +81,19 @@ class RevisaoController extends Controller
     {
         $usuario_id = session('user')->usuario_id;
         $revisoes = $this->revisoesService->getRevisoesByUsuario($usuario_id);
-        return view('home', compact('revisoes'));
+        $disciplinas = $this->revisoesService->listAllDisciplinas();
+        return view('home', compact('revisoes', 'disciplinas'));
+    }
+
+    public function filter(Request $request)
+    {
+        $usuario_id = session('user')->usuario_id;
+        $filtros = $request->all();
+        
+        $revisoes = $this->revisoesService->getRevisoesByUsuario($usuario_id, $filtros);
+        $disciplinas = $this->revisoesService->listAllDisciplinas();
+        
+        return view('home', compact('revisoes', 'disciplinas'));
     }
 
   
